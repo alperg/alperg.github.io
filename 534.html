@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Location, location</title>
+</head>
+<body>
+
+<h1>location = location</h1>
+
+<h4 id="subhead">... and a gazillion other ways to reload the page with JavaScript</h4>
+
+<div id="here"></div>
+
+
+<script type="text/javascript">
+  var p = [
+    "location",
+    "location.href",
+    "window.location",
+    "self.location",
+    "window.location.href",
+    "self.location.href",
+    "location['href']",
+    "window['location']",
+    "window['location'].href",
+    "window['location']['href']",
+    "window.location['href']",
+    "self['location']",
+    "self['location'].href",
+    "self['location']['href']",
+    "self.location['href']"
+  ];
+
+  var f = [
+    "location.assign(%)",
+    "location.replace(%)",
+    "window.location.assign(%)",
+    "window.location.replace(%)",
+    "self.location.assign(%)",
+    "self.location.replace(%)",
+    "location['assign'](%)",
+    "location['replace'](%)",
+    "window.location['assign'](%)",
+    "window.location['replace'](%)",
+    "window['location'].assign(%)",
+    "window['location'].replace(%)",
+    "window['location']['assign'](%)",
+    "window['location']['replace'](%)",
+    "self.location['assign'](%)",
+    "self.location['replace'](%)",
+    "self['location'].assign(%)",
+    "self['location'].replace(%)",
+    "self['location']['assign'](%)",
+    "self['location']['replace'](%)"
+  ];
+
+  var r = [], tpl;
+  for(var i in p) {
+    for(var j in p) {
+       r[r.length] = p[i] + ' = ' + p[j];
+    }
+
+    for(var k in f) {
+       tpl = f[k];
+       r[r.length] = tpl.replace('%', p[i]);
+    }
+  }
+
+  r[r.length] = "location.reload()";
+  r[r.length] = "location['reload']()";
+  r[r.length] = "window.location.reload()";
+  r[r.length] = "window['location'].reload()";
+  r[r.length] = "window.location['reload']()";
+  r[r.length] = "window['location']['reload']()";
+  r[r.length] = "self.location.reload()";
+  r[r.length] = "self['location'].reload()";
+  r[r.length] = "self.location['reload']()";
+  r[r.length] = "self['location']['reload']()";
+
+  document.getElementById('here').innerHTML = '<ol><li>' + r.join('</li>\n<li>') + '</li></ol>';
+  var subh = document.getElementById('subhead').firstChild;
+  subh.nodeValue = subh.nodeValue.replace(/gazillion/, r.length-1);
+</script>
+
+</body>
+</html>
