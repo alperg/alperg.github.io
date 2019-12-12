@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lucky Student</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: Helvetica, sans-serif;
+      }
+      .wrapper {
+        width: 320px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .form {
+        padding: 5px 10px;
+        background-color: #c8fdff;
+      }
+      .form .form-field {
+        margin-right: 20px;
+      }
+      h3 {
+        padding: 10px;
+        margin: 0;
+        font-size: 18px;
+        color: #777;
+        text-shadow: 0 0 40px red;
+      }
+      h1 {
+        padding: 10px;
+        margin: 35px 10px;
+        height: 30px;
+        border: 2px dashed #b2fc5e;
+        width: 275px;
+        background: lightyellow;
+        border-radius: 10px;
+        text-align: center;
+        color: #555;
+        font-size: 25px;
+        box-shadow: 0 0 68px #b2fc5e;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- <form class="form" name="cohorts">
+      <span class="form-field"><input type="checkbox" id="mw" name="mw">M-W</span>
+        <span class="form-field"><input type="checkbox" id="tt" name="tt" checked>T-TH</span>
+      </form> -->
+      <h1 id="studentName"></h1>
+    </div>
+  </body>
+  <script>
+
+    function shuffle(array) {
+      var m = array.length, t, i;
+      // While there remain elements to shuffle…
+      while (m) {
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--);
+        // And swap it with the current element.
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+      }
+
+      return array;
+    }
+
+    const list = [ "Alex", "Asad", "Christian", "David", "Diantai", "Gabriel", "Gene", "Jarmir", "Jasmin", "Joie", "Jonathan", "Karna", "Katie", "Keshav", "Kevin", "Leonie", "Micelli", "Molly", "Nicholas", "Omar", "Patrick", "Rachel", "Rashmi", "Stephanie", "Sue", "Tyler" ];
+
+    let shuffledArray = shuffle(list);
+
+    console.log(shuffledArray);
+
+    document.getElementById('studentName').addEventListener('click', function() {
+      const randomNumber = Math.floor(Math.random() * list.length);
+      console.log(randomNumber, list[randomNumber] || []);
+
+      if(list.length) {
+        document.getElementById('studentName').innerHTML = list[randomNumber];
+        shuffledArray.splice(randomNumber, 1);
+        console.log(shuffledArray);
+      }
+      else {
+        document.getElementById('studentName').innerHTML = "";
+      }
+    });
+  </script>
+</html>
