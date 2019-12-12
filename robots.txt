@@ -2,3 +2,6 @@ User-agent: *
 Disallow: /assets/
 Disallow: /angular2-first-sample/
 Disallow: /food/
+Disallow: /random.html
+Disallow: /reload.html
+Disallow: /food
